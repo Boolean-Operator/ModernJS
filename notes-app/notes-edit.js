@@ -6,9 +6,7 @@ const homeButton = document.querySelector('#home-note-page')
 
 const noteId = location.hash.substring(1)
 let notes = getSavedNotes()
-let note = notes.find(function (note) {
-  return note.id === noteId
-})
+let note = notes.find((note) => note.id === noteId)
 
 if (note === undefined) { location.assign('/index.html')}
 
@@ -18,7 +16,7 @@ bodyElement.value = note.body
 dateElement.textContent = generateLastEdited(note.updatedAt)
 
 //Event listener for changes to title
-titleElement.addEventListener('input', function (e) {
+titleElement.addEventListener('input', (e) => {
     note.title = e.target.value
     note.updatedAt = moment().valueOf()
     dateElement.textContent = generateLastEdited(note.updatedAt)
@@ -26,18 +24,16 @@ titleElement.addEventListener('input', function (e) {
 })
 
 //Event listener for changes to body
-bodyElement.addEventListener('input', function (e) {
+bodyElement.addEventListener('input', (e) => {
     note.body = e.target.value
     note.updatedAt = moment().valueOf()
     dateElement.textContent = generateLastEdited(note.updatedAt)
     saveNotes(notes)
 })
 
-homeButton.addEventListener('click', function () {
-  location.assign('/index.html')
-})
+homeButton.addEventListener('click', () => location.assign('/index.html'))
 
-removeButton.addEventListener('click', function () {
+removeButton.addEventListener('click', () => {
   removeNote(note.id)  
   saveNotes(notes)
   location.assign('/index.html')
@@ -45,12 +41,10 @@ removeButton.addEventListener('click', function () {
 
 
 // listen for any changes to the stored data and update elements with changes
-window.addEventListener('storage', function (e) {
+window.addEventListener('storage', (e) => {
   if (e.key === 'notes')  {
     notes = JSON.parse(e.newValue)
-      note = notes.find(function (note) {
-      return note.id === noteId
-    })
+      note = notes.find((note) => note.id === noteId)
 
     if (note === undefined) { location.assign('/index.html') }
 
@@ -58,6 +52,4 @@ window.addEventListener('storage', function (e) {
     bodyElement.value = note.body
     dateElement.textContent = generateLastEdited(note.updatedAt)
   }
-  
-
-} )
+})
