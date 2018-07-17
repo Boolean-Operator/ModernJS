@@ -71,14 +71,11 @@ const sortNotes = function (notes, sortBy) {
       })
   } else if (sortBy === 'byAlpha') {
     return notes.sort(function (a, b) {
-      // a = a.createdAt;
-      // b = b.createdAt;
+      a = a.title.toLowerCase();
+      b = b.title.toLowerCase();
       return (a < b) ? -1 : (a > b) ? 1 : 0
     })
   }
-  // {
-  //   return notes
-  // }
 }
 
 // Render application notes
