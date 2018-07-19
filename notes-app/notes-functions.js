@@ -1,7 +1,17 @@
+'use strict'
+
+
 // Check for existing saved data
 const getSavedNotes = () => {
   const notesJSON = localStorage.getItem('notes')
-  return (notesJSON !== null) ? JSON.parse(notesJSON) : []
+
+  try {
+    return (notesJSON) ? JSON.parse(notesJSON) : []
+  } catch (e) {
+    return []
+  }
+
+
 }
 
 // add note to notes array

@@ -1,7 +1,13 @@
+'use strict'
+
 // Fetch existing todos from localStorage
 const getSavedTodos = () => {
   const todosJSON = localStorage.getItem('todos')
-  return (todosJSON !== null) ? JSON.parse(todosJSON) : []
+  try {
+    return (todosJSON) ? JSON.parse(todosJSON) : []
+  } catch (e) {
+    return []
+  }
 }
 
 const capFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1)
@@ -54,8 +60,8 @@ const renderTodos = (todos, filters) => {
   document.querySelector('#todos').appendChild(generateSummaryDOM(notCompleted))
   
   filteredTodos.forEach((todo) => {
-    document.querySelector('#todos').appendChild(generateTodoDOM(todo)))
-  } 
+    document.querySelector('#todos').appendChild(generateTodoDOM(todo))
+  }) 
 }
 
 
