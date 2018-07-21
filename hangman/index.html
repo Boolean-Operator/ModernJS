@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HangMan</title>
+</head>
+<body>
+  <h1>Hangman Game</h1>
+  <input id="puzzle-word" type="text" placeholder="Enter hangman word here">
+  <input type="number" id="puzzle-turns" min="1" max="20">
+  <input id='word-input' type="submit">
+  <div id = "gameBoard">
+    <div id="puzzle"></div>
+    <span id="remainingTurns"></span>
+    <input id="letter-guess" type="text" placeholder="Next Letter">
+    <button id="make-guess">Submit Guess</button>
+  </div>
+
+  <script src = "hangman-functions.js"></script>
+  <script src = "hangman-app.js"></script>
+</body>
+</html>
