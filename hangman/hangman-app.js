@@ -1,25 +1,23 @@
-'use strict'
+const game1 = new Hangman('Cat', 3)
 
-const wordElement = document.querySelector('#puzzle-word')
-const remainingTurns = document.querySelector('#puzzle-turns')
-const submitWordButton = document.querySelector('#word-input')
+const renderGame = () => {
+  document.querySelector('#gameBoard').appendChild(generateGameDOM())
+}
 
-const guessElement = document.querySelector('#letter-guess')
-const guessButton = document.querySelector('#make-guess')
+const generateGameDOM = ()=> {
+  
+  const gameElem = document.createElement('div')
+  const wordElem = document.createElement('p')
+  const guessElem = document.createElement('p')
+  
+  window.addEventListener('keypress', function (e) {
+    const guess = e.key;
+    wordElem.textContent = game1.getPuzzle()
+    guessElem.textContent = game1.makeGuess(guess)
+    gameElem.appendChild(wordElem)
+    gameElem.appendChild(guessElem)
+  });
+  return gameElem
+}
 
-
-
-submitWordButton.addEventListener('click', (e) => {
-  const game = new Hangman(wordElement.value, remainingTurns.value);
-  console.log(game);
-  console.log(game.getPuzzle());
-})
-
-
-
-guessButton.addEventListener('click', (e) => {
-  let guess = guessElement.value
-  console.log(guess);
-  Hangman.makeGuess(guess)
-})
-
+renderGame()

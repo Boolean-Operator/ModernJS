@@ -1,8 +1,22 @@
+'use strict'
+
 const Hangman = function ( word, remainingGuesses) {
-  this.word = word.toLowerCase().split('')
+  this.word = word.toUpperCase().split('')
   this.remainingGuesses = remainingGuesses
-  this.guessedLetters = ['e','j']
-  
+  this.guessedLetters = []
+  this.status = 'playing'
+}
+
+Hangman.prototype.updateStatus = function () {
+  const finished = this.word.every((elem) => this.guessedLetters.includes(elem) || elem === ' ')   
+
+  if (this.remainingGuesses === 0) {
+    this.status = 'failed'
+  }  else if (finished) {
+    this.status = 'finished'
+  } else { 
+    this.status = 'playing'
+  }
 }
 
 Hangman.prototype.getPuzzle = function () {
@@ -11,18 +25,25 @@ Hangman.prototype.getPuzzle = function () {
   this.word.forEach((letter) => {
     if(this.guessedLetters.includes(letter) || letter === ' ') {
       puzzle += letter
-
     } else {
       puzzle += '*'
     }
   })
-
   return puzzle
-
-  
-  
 }
 
+Hangman.prototype.makeGuess = function (guess) {
+  guess = guess.toUpperCase()
+  const isUnique = !this.guessedLetters.includes(guess)
+  const isBadGuess = !this.word.includes(guess)
 
-const game2 = new Hangman('New Jersey', 12)
-console.log(game2.getPuzzle());
+  if (isUnique) {
+    this.guessedLetters.push(guess);
+  } 
+  
+  if (isUnique && isBadGuess) {
+    this.remainingGuesses = this.remainingGuesses - 1
+  }
+  this.updateStatus()
+}
+
