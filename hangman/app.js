@@ -1,23 +1,21 @@
 'use strict'
 const gameEl = document.querySelector('#gameBoard')
 const wordEl = document.querySelector('#puzzle')
-const guessEl = document.querySelector('#guesses')
+const statusEl = document.querySelector('#status')
 const usedLettersEl = document.querySelector('#usedLetters')
-const game = new Hangman('New Jersey', 5)
+const game = new Hangman('New Jersey', 3)
 
 wordEl.textContent = game.getPuzzle()
-guessEl.textContent = `Remaining Guesses: ${game.remainingGuesses}`;
+statusEl.textContent = game.statusMessage();
 usedLettersEl.textContent = `Used Letters: ${game.guessedLetters}`;
-console.log(game.status);
 
 
 window.addEventListener('keypress', function (e) {
   const guess = e.key;
   game.makeGuess(guess)
   wordEl.textContent = game.getPuzzle()
-  guessEl.textContent = `Remaining Guesses: ${game.remainingGuesses}`;
+  statusEl.textContent = game.statusMessage()
   usedLettersEl.textContent = `Used Letters: ${game.guessedLetters}`;
-  console.log(game.status);
   
 });
 

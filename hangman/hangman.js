@@ -33,17 +33,33 @@ Hangman.prototype.getPuzzle = function () {
 }
 
 Hangman.prototype.makeGuess = function (guess) {
-  guess = guess.toUpperCase()
-  const isUnique = !this.guessedLetters.includes(guess)
-  const isBadGuess = !this.word.includes(guess)
-
-  if (isUnique) {
-    this.guessedLetters.push(guess);
-  } 
-  
-  if (isUnique && isBadGuess) {
-    this.remainingGuesses = this.remainingGuesses - 1
+  if (this.status !== 'playing') {
+    return
   }
-  this.updateStatus()
+    guess = guess.toUpperCase()
+    const isUnique = !this.guessedLetters.includes(guess)
+    const isBadGuess = !this.word.includes(guess)
+  
+    if (isUnique) {
+      this.guessedLetters.push(guess);
+    } 
+    
+    if (isUnique && isBadGuess) {
+      this.remainingGuesses = this.remainingGuesses - 1
+    }
+    this.updateStatus()
+} 
+
+Hangman.prototype.statusMessage = function () {
+  
+  if (this.status === 'finished') {
+    return `Congratulations, you guess the word.`
+  } else if (this.status === 'failed') {
+    let solution = this.word.join('')
+    return `Nice Try.  The word was "${solution}"`
+  } else {
+    return `Guesses remaining: ${this.remainingGuesses}`
+  }
+  
 }
 
