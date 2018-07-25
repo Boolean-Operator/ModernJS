@@ -17,7 +17,7 @@ class Hangman {
       this.status = 'playing'
     }
   }
-  getPuzzle() {
+  get puzzle() {
     let puzzle = ''
     
     this.word.forEach((letter) => {
@@ -47,7 +47,7 @@ class Hangman {
     }
     this.updateStatus()
   }
-  statusMessage() {
+  get statusMessage() {
 
     if (this.status === 'finished') {
       return `Congratulations, you guess the word.`
@@ -60,3 +60,7 @@ class Hangman {
   } 
 }
 
+// conver statusMessage to custom getter
+//convert getPuzzle to custom getter
+//change usage in app.js
+// test 
