@@ -1,4 +1,4 @@
-class PersonClass {
+class Person {
   constructor(firstName, lastName, age, likes = []) {
     this.firstName = firstName
     this.lastName = lastName
@@ -21,45 +21,51 @@ class PersonClass {
   }
 }
 
-const myPerson = new PersonClass('Mark', 'Graybill', 52, ['Building wooden boats', 'Biking', 'Snow skiing'])
-console.log(myPerson.getBio());
-myPerson.setName('Logan Graybill');
-console.log(myPerson.getBio());
+class Employee extends Person {
+  constructor(firstName, lastName, age,
+  position, likes) {
+    super(firstName,lastName,age, likes)
+    this.position = position
+  }
+  getBio() {
+    return `${this.firstName} ${this.lastName} is a ${this.position}`
 
-
-
-const Person = function (fName, lName, age, likes= []) {
-  this.firstName = fName
-  this.lastName = lName
-  this.age = age
-  this.likes = likes
+  }
+  getYearsLeft() {
+    return 65 - this.age
+  }
 }
 
-Person.prototype.getBio = function () {
-  let bio = `${this.firstName} is ${this.age}.`
-
-  this.likes.forEach((like) => {
-    bio += ` ${this.firstName} likes ${like}.`
-  })
-
-  return bio
+class Student extends Person {
+  constructor(firstName, lastName, age, grade, likes) {
+    super(firstName, lastName, age, likes)
+    this.grade = grade
+  }
+  getBio() {
+    const status = this.grade >= 70 ? 'passing' : 'failing'
+    return `${this.firstName} is ${status} the class.`
+  }
+  updateGrade(points) {
+    this.grade += points
+  }
 }
 
-
-Person.prototype.setName = function (fullName) {
-  const name = fullName.split(' ')
-  this.firstName = name[0] 
-  this.lastName = name[1]
-  
-}
-
-
-
-const me = new Person('Mark', "Graybill", 52, ['Wooden Boats', 'Biking', 'Soccer', 'Learning new skills'])
-me.setName('Alex Turner')
+const me = new Employee('Mark', 'Graybill', 52, ['Building wooden boats', 'Biking', 'Snow skiing'])
+console.log(me.getBio());
+me.setName('Logan Graybill');
 console.log(me.getBio());
 
-const person2 = new Person('Bill', 'Newman', 28)
+const person2 = new Person ('Clancey', 'Turner', 27)
 console.log(person2.getBio());
 
+const student1 = new Student('Logan', 'Todd', 8, 65, [] )
+console.log(student1.getBio());
+student1.updateGrade(25);
+console.log(student1.getBio());
+
+
+const student2 = new Student('Tammy-Jean', 'Smith', 8, 72, [] )
+console.log(student2.getBio());
+student2.updateGrade(-15);
+console.log(student2.getBio());
 
