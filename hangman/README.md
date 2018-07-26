@@ -33,11 +33,12 @@ And repeat
 ## Versioning
 
 This is the first working version. 
-Ver 2. will include a libraries of words and associated difficulty levels.
+Ver 2. will include a libraries and/or API's of words with associated difficulty levels.
 Ver 3. will include a more robust UI improving interaction and feedback. 
   - GUI of letters to available and already used.
   - Better background and messaging and sounds
   - GUI of missed letters progress, showing head, arms, body, legs
+Ver 3. alternate will be a wheel of fortune game with scoring and multiple players
 
 ## Authors
 
