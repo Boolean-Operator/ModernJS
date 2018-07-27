@@ -25,7 +25,7 @@ document.querySelector('#filter-by').addEventListener('change', (e) => {
   renderNotes(notes, filters)  
 })
 
-window.addEventListener('storage', (e) => {
+self.addEventListener('storage', (e) => {
   if (e.key === 'notes') {
     notes = JSON.parse(e.newValue)
     renderNotes(notes, filters)

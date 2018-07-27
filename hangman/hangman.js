@@ -59,8 +59,3 @@ class Hangman {
     }
   } 
 }
-
-// conver statusMessage to custom getter
-//convert getPuzzle to custom getter
-//change usage in app.js
-// test 
