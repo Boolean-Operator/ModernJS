@@ -24,25 +24,19 @@ window.addEventListener('keypress', (e) => {
 
 // HTTP request to meadio/puzzle
 wordCount = 3
-getPuzzle(wordCount,(error, puzzle) => {
-  if (error) {
-    console.log(`Error: ${error}`);
-  } else {
-    console.log(puzzle);
-  }
-}) 
+getPuzzle(wordCount).then((puzzle) => {
+  console.log(puzzle);
+}, (err) => {
+  console.log(`Error:${err}`);
+  
+})
 
 
 // HTTP request to restcountries.eu
 const countryCode = 'CA'
-getCountry(countryCode, (error, country) => {
-  if (error) {
-    console.log(`Error: ${error}`);
-  } else {
-    console.log(`Country Name: ${country.name}`);
-  }
-})
-
-
-
-
+getCountry(countryCode).then((country) => {
+  console.log(country);
+  console.log(`country Name: ${country.name}`);
+}, (err) => {
+  console.log(`Error: ${err}`);
+}) 
