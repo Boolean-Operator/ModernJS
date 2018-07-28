@@ -1,34 +1,58 @@
 //Callback
-const getDataCallback = (callback) => {
+const getDataCallback = (num, callback) => {
     setTimeout(() => {
-    callback(undefined,"Time's up Sucka!");
+      if (typeof num === 'number') {
+        callback(undefined, num * 2)
+      } else {
+        callback("Gotta give me a number, Sucka!");
+      }
   }, 2000)
 }
 
-getDataCallback((err, data) => {
+
+// First Level of Callback Hell ~o~
+getDataCallback(2, (err, data) => {
   if (err) {
-    
+    console.log(err);
   } else {
-    console.log(data);
-    
-  }
+    getDataCallback(data, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(data);
+      }
+    })
+  }  
 })
 
 // Promise
-const getDataPromise = (data) => new Promise((resolve, reject) => {
+const getDataPromise = (num) => new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve(`This is the resolve data: ${data}`)
-    // reject('This is the reject error')
-    // reject('This is the reject error')
+    typeof num === 'number'
+    ? resolve(num*2)
+    : reject('Number must be provided')
   }, 2000)
 })
 
+// Nested
+getDataPromise(2).then((data) => {
+  getDataPromise(data).then((data) => {
+    console.log(`Nested Promise data: ${data}`);
+  }, (err) => {
+    console.log(err);
+  })
+}, err => {
+  console.log(err);
+})
 
-const myPromise = getDataPromise(123)
-myPromise.then((data) => {
-  console.log(data);
-  
-}, (err)=> {
+// Chaining
+getDataPromise(10).then((data) => {
+  return getDataPromise(data)
+}).then((data) => {
+  return getDataPromise(data)
+}).then((data) => {
+  console.log(`Chained Promise data ${data}`);
+}).catch((err) => {
   console.log(err);
   
 })
