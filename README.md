@@ -68,4 +68,12 @@ The  next layer is includes arrays, objects and functions.  With these tools we 
     - Adding babel into Webpack
     - Webpack Dev Server
     - Environments & Source Map
-    
+
+
+### Projects
+
+[Hangman](https://github.com/Boolean-Operator/ModernJS/tree/master/hangman)
+
+[Notes Application](https://github.com/Boolean-Operator/ModernJS/tree/master/notes-app)
+
+[Todo Application](https://github.com/Boolean-Operator/ModernJS/tree/master/todo-app)
