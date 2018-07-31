@@ -25,11 +25,11 @@ window.addEventListener('keypress', (e) => {
 getPuzzle(wordCount).then((puzzle) => {
   console.log(puzzle);
 }).catch((err) => {
-      console.log(`Error:${err}`);
+  console.log(`Error:${err}`);
 })
 
 
-// HTTP request to restcountries.eu
+// fetch request to restcountries.eu
 let countryCode = 'GB'
 getCountry(countryCode).then((country) => {
   console.log(country);
@@ -38,17 +38,24 @@ getCountry(countryCode).then((country) => {
   console.log(`Error: ${err}`);
 }) 
 
-
+// fetch request to ipinfo.io
 getLocation().then((location) => {
   console.log(`Are you are located in ${location.city}, ${location.region}  ${location.country} ?`);
-  
 }).catch((err) => {
   console.log(`Error: ${err}`);
 })
 
-getLocation().then((location) => {
-  return getCountry(location.country)
-}).then((country) => {
+// // chaining Promises and fetch request for restcountries.eu(line 50) to ipinfo.io(line 49)
+// getLocation().then((location) => {
+//   return getCountry(location.country)
+// }).then((country) => {
+//   console.log(country.name);
+// }).catch((err) => {
+//   console.log(err);
+  
+// })
+
+getCurrentCountry().then((country) => {
   console.log(country.name);
 }).catch((err) => {
   console.log(err);
