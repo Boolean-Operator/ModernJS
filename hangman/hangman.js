@@ -24,7 +24,7 @@ class Hangman {
       if (this.guessedLetters.includes(letter) || letter === ' ') {
         puzzle += letter
       } else {
-        puzzle += '*'
+        puzzle += '__'
       }
     })
     return puzzle
@@ -50,7 +50,7 @@ class Hangman {
   get statusMessage() {
 
     if (this.status === 'finished') {
-      return `Congratulations, you guess the word.`
+      return `Congratulations!`
     } else if (this.status === 'failed') {
       let solution = this.word.join('')
       return `Nice Try.  The word was "${solution}"`

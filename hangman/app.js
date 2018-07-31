@@ -1,63 +1,42 @@
 'use strict'
-const gameEl = document.querySelector('#gameBoard')
+// const gameEl = document.querySelector('#gameBoard')
 const wordEl = document.querySelector('#puzzle')
 const statusEl = document.querySelector('#status')
 const usedLettersEl = document.querySelector('#usedLetters')
-let wordCount = document.getElementById('wordCount')
-const newGame = document.getElementById('newGame')
-const game = new Hangman("New Jersey", 3)
-wordCount = 3
-//let guesses = (Math.floor(data.puzzle.length / 5 * 2));
+const newGame = document.querySelector('#reset')
+const wordCountSlider = document.querySelector('#wordCount')
+const rangeValue = document.querySelector('#rangeValue')
+let game
 
-wordEl.textContent = game.puzzle
-statusEl.textContent = game.statusMessage;
-usedLettersEl.textContent = `Used Letters: ${game.guessedLetters}`;
+wordCountSlider.addEventListener('change', () => {
+  rangeValue.textContent = wordCountSlider.value
+})
 
 window.addEventListener('keypress', (e) => {
   const guess = e.key;
   game.makeGuess(guess)
+  render()
+})
+
+const render = () => {
+  rangeValue.textContent = wordCountSlider.value
   wordEl.textContent = game.puzzle
   statusEl.textContent = game.statusMessage
   usedLettersEl.textContent = `Used Letters: ${game.guessedLetters}`;
-});
+}
 
-// HTTP request to meadio/puzzle
-getPuzzle(wordCount).then((puzzle) => {
+const startGame = async () => {
+  let wordCount = wordCountSlider.value
+  // console.log(wordCount);
+  const puzzle = await getPuzzle(wordCount)
   console.log(puzzle);
-}).catch((err) => {
-  console.log(`Error:${err}`);
-})
+  const guesses = (Math.floor(puzzle.length / 7 * 2)) < 4
+    ? 4
+    : (Math.floor(puzzle.length / 7 * 2));
+  game = new Hangman(puzzle, guesses)
+  render()
+}
 
+document.querySelector('#reset').addEventListener('click', startGame)
 
-// fetch request to restcountries.eu
-let countryCode = 'GB'
-getCountry(countryCode).then((country) => {
-  console.log(country);
-  console.log(`country Name: ${country.name}`);
-}).catch((err) => {
-  console.log(`Error: ${err}`);
-}) 
-
-// fetch request to ipinfo.io
-getLocation().then((location) => {
-  console.log(`Are you are located in ${location.city}, ${location.region}  ${location.country} ?`);
-}).catch((err) => {
-  console.log(`Error: ${err}`);
-})
-
-// // chaining Promises and fetch request for restcountries.eu(line 50) to ipinfo.io(line 49)
-// getLocation().then((location) => {
-//   return getCountry(location.country)
-// }).then((country) => {
-//   console.log(country.name);
-// }).catch((err) => {
-//   console.log(err);
-  
-// })
-
-getCurrentCountry().then((country) => {
-  console.log(country.name);
-}).catch((err) => {
-  console.log(err);
-  
-})
+// startGame()
