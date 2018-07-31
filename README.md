@@ -7,6 +7,15 @@ This course builds a foundation with the basics of modern jsavascript, including
 The  next layer is includes arrays, objects and functions.  With these tools we build a todo app and a notes app with filters,sorting and local data storage.  Live-server is used to open and use the applications and third-party libraries are utilized to improve functionality
 
 
+### Projects
+
+[Hangman](https://github.com/Boolean-Operator/ModernJS/tree/master/hangman)
+
+[Notes Application](https://github.com/Boolean-Operator/ModernJS/tree/master/notes-app)
+
+[Todo Application](https://github.com/Boolean-Operator/ModernJS/tree/master/todo-app)
+
+
 ### Sections 
   - Basics
     - Variables
@@ -68,12 +77,3 @@ The  next layer is includes arrays, objects and functions.  With these tools we 
     - Adding babel into Webpack
     - Webpack Dev Server
     - Environments & Source Map
-
-
-### Projects
-
-[Hangman](https://github.com/Boolean-Operator/ModernJS/tree/master/hangman)
-
-[Notes Application](https://github.com/Boolean-Operator/ModernJS/tree/master/notes-app)
-
-[Todo Application](https://github.com/Boolean-Operator/ModernJS/tree/master/todo-app)
