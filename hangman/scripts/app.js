@@ -6,6 +6,7 @@ const usedLettersEl = document.querySelector('#usedLetters')
 const newGame = document.querySelector('#reset')
 const wordCountSlider = document.querySelector('#wordCount')
 const rangeValue = document.querySelector('#rangeValue')
+const cards = document.querySelectorAll('.card');
 let game
 
 wordCountSlider.addEventListener('change', () => {
@@ -15,19 +16,26 @@ wordCountSlider.addEventListener('change', () => {
 window.addEventListener('keypress', (e) => {
   const guess = e.key;
   game.makeGuess(guess)
+  
+  for (let index = 0; index < cards.length; index++) {
+    cards[index].addEventListener('keypress', function () {
+      cards[index].classList.toggle('is-flipped');
+    });
+  }
   render()
 })
 
 const render = () => {
   rangeValue.textContent = wordCountSlider.value
-  wordEl.textContent = game.puzzle
+  wordEl.innerHTML = game.puzzle
+  console.log(typeof(wordEl.textContent));
+  
   statusEl.textContent = game.statusMessage
-  usedLettersEl.textContent = `Used Letters: ${game.guessedLetters}`;
+  usedLettersEl.textContent = `Letters Used : ${game.guessedLetters}`;
 }
 
 const startGame = async () => {
   let wordCount = wordCountSlider.value
-  // console.log(wordCount);
   const puzzle = await getPuzzle(wordCount)
   console.log(puzzle);
   const guesses = (Math.floor(puzzle.length / 7 * 2)) < 4
@@ -38,5 +46,4 @@ const startGame = async () => {
 }
 
 document.querySelector('#reset').addEventListener('click', startGame)
-
 // startGame()

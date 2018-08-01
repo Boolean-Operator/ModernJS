@@ -24,7 +24,7 @@ class Hangman {
       if (this.guessedLetters.includes(letter) || letter === ' ') {
         puzzle += letter
       } else {
-        puzzle += '__'
+        puzzle += '*'
       }
     })
     return puzzle
@@ -55,7 +55,7 @@ class Hangman {
       let solution = this.word.join('')
       return `Nice Try.  The word was "${solution}"`
     } else {
-      return `Guesses remaining: ${this.remainingGuesses}`
+      return `Remaining Guesses : ${this.remainingGuesses}`
     }
   } 
 }

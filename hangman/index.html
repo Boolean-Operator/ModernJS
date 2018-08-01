@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/styles/styles.css" type="text/css" >
   <link rel="icon" type="Icon/ico" href="favicon.ico" />
   <title>HangMan</title>
 </head>
@@ -11,20 +12,22 @@
   <h1>Hangman Game</h1>
 
   <div id = "gameBoard">
-    <fieldset>
+    <fieldset class="field">
       
-    <div id="puzzle"></div>
-    <p id="status"></p>
-    <p id="usedLetters"></p>
-    <label for="puzzleWordCount">Word Count</label>
-    <button id="reset">New Game</button>
-    <input type="range" id="wordCount" name="puzzleWordCount" min="1" max="9">
-    <span id="rangeValue">#</span>
+    <div id="puzzle" class="gameElements">*</div>
+    <p id="status" class="gameElements">Remaining Guesses :</p>
+    <p id="usedLetters" class="gameElements">Letters Used :</p>
+    <label for="puzzleWordCount" class="gameElements" >Word Count :</label>
+    <span id="rangeValue" class="gameElements">#</span>
+    <div>
+      <button id="reset">New Game</button>
+      <input type="range" id="wordCount" class="gameElements" name="puzzleWordCount" min="1" max="9">
+    </div>
   </div>
 
-  <script src = "requests.js"></script>
-  <script src = "hangman.js"></script>
-  <script src = "app.js"></script>
+  <script src = "/scripts/requests.js"></script>
+  <script src = "/scripts/hangman.js"></script>
+  <script src = "/scripts/app.js"></script>
 </body>
 </html>
 
