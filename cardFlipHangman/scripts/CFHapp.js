@@ -16,9 +16,10 @@ wordCountSlider.addEventListener('change', () => {
 
 
 for (let index = 0; index < cards.length; index++) {
-  cards[index].addEventListener('click', function () {
+  
+  cards[index].addEventListener('keypress', function () {
+    console.log('click');
     cards[index].classList.toggle('is-flipped');
-    render()
   });
 }
 

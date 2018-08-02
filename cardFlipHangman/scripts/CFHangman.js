@@ -19,15 +19,16 @@ class Hangman {
   }
   get puzzle() {
     let puzzle =''
-    const makeCard = (letter) => {
+    const makeCard = () => {
       return `<div class="scene scene--card">
       <div class="card">
         <span class="card__face card__face--front"></span>
-        <span class="card__face card__face--back">${letter}</span>
+        <span class="card__face card__face--back"></span>
       </div>
     </div>`
     }
 
+    
     const flipCard = (letter) => {
       return `<div class="scene scene--card">
       <div class="card is-flipped">
@@ -40,7 +41,6 @@ class Hangman {
     this.word.forEach((letter) => {
       if (this.guessedLetters.includes(letter) || letter === ' ') {
         puzzle = puzzle + flipCard(letter)
-        
         
       } else {
         puzzle = puzzle + makeCard('')
