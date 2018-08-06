@@ -1,15 +1,15 @@
-
+/* Over-ride Browser Defaults */
 * {
      box-sizing: border-box;
      margin: 0;
      padding: 0;
 }
 
- html {
+html {
      font-size: 92.5%;
 }
 
- body {
+body {
      background: #2B292E;
      color: #fafafa;
      font-family: Helvetica, Arial, sans-serif;
@@ -20,7 +20,7 @@
      min-height: 100vh;
 }
 
- span {
+span {
      border-bottom: 1px solid #534f59;
      display: inline-block;
      font-size: 2rem;
@@ -32,77 +32,51 @@
      width: 2.4rem;
 }
 
- p {
+p {
      font-weight: 300;
      margin-bottom: .8rem;
 }
 
- .puzzle {
+.gameTitle {
+  display: block;
+  margin-bottom: 125px;
+  text-align: center;
+}
+.puzzle {
      display: flex;
      margin-bottom: 4.8rem;
 }
-
- .button {
-     background: #7044a0;
-     border: none;
-     border-bottom: 2px solid #603a88;
-     cursor: pointer;
-     color: white;
-     font-size: 1.4rem;
-     font-weight: 300;
-     padding: .8rem;
-     transition: background .3s ease, color .3s ease;
+.gameInfo {
+  width: 550px;
+  margin: 0 auto;
+}
+.gameElements {
+  text-transform: uppercase;
 }
 
- .button:hover {
-     background: #5F3A87;
+.field {
+  padding: 5px;
+  display: block;
 }
 
-body { font-family: sans-serif; }
-
-.scene {
-  width: 40px;
-  height: 46px;
-  border: 1px solid #CCC;
-  margin: 1% .125%;
-  float: left;
-  /* perspective: 600px; */
+.button {
+  background: #77993f;
+  border: none;
+  border-bottom: 2px solid #355820;
+  cursor: pointer;
+  color: white;
+  float: right;
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding: .8rem;
+  transition: background .3s ease, color .3s ease;
 }
 
-.card {
-  /* position: relative; */
-  width: 100%;
-  height: 100%;
-  margin: 0.25%;
-  float: left;
-  /* cursor: pointer; */
-  transform-style: preserve-3d;
-  transform-origin: center right;
-  transition: transform 1s;
-  /* display: inline-block; */
+
+.button:hover {
+     background: rgb(27, 70, 14);
 }
 
-.card.is-flipped {
-  transform: translateX(-100%) rotateY(-180deg);
-}
-
-.card__face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  line-height: 140%;
-  color: darkcyan;
-  text-align: center;
-  font-weight: bold;
-  font-size: 2em;
-  backface-visibility: hidden;
-}
-
-.card__face--front {
-  background: cadetblue;
-}
-
-.card__face--back {
-  background: aliceblue;
-  transform: rotateY(180deg);
+#wordCount {
+  margin-top: 20px
 }

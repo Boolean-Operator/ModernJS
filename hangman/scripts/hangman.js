@@ -1,7 +1,7 @@
 'use strict'
 class Hangman {
   constructor(word, remainingGuesses) {
-    this.word = word.toUpperCase().split('')
+    this.word = word.toLowerCase().split('')
     this.remainingGuesses = remainingGuesses
     this.guessedLetters = []
     this.status = 'playing'
@@ -34,7 +34,7 @@ class Hangman {
       return
     }
 
-    guess = guess.toUpperCase()
+    guess = guess.toLowerCase()
     const isUnique = !this.guessedLetters.includes(guess)
     const isBadGuess = !this.word.includes(guess)
 
@@ -59,3 +59,5 @@ class Hangman {
     }
   } 
 }
+
+
