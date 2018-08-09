@@ -10,11 +10,13 @@ const getSavedTodos = () => {
   }
 }
 
+// Add capitalization to first letter of input string
 const capFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
 // Add todo to array
 const addTodo = (todoText) => {
-  capFirst(todoText)
+  todoText = capFirst(todoText)
+  
   todos.push({
     id: uuidv4(),
     text: todoText,
@@ -48,6 +50,7 @@ const toggleTodo = (id) => {
 
 // Render application todos based on filters
 const renderTodos = (todos, filters) => {
+  const todoEl = document.querySelector('#todos')
   const filteredTodos = todos.filter((todo) => {
     let textSearch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
     let completed = !todo.completed
@@ -56,52 +59,67 @@ const renderTodos = (todos, filters) => {
   
   const notCompleted = filteredTodos.filter((todo) => !todo.completed)
     
-  document.querySelector('#todos').innerHTML = ''
-  document.querySelector('#todos').appendChild(generateSummaryDOM(notCompleted))
+  todoEl.innerHTML = ''
+  todoEl.appendChild(generateSummaryDOM(notCompleted))
   
-  filteredTodos.forEach((todo) => {
-    document.querySelector('#todos').appendChild(generateTodoDOM(todo))
-  }) 
+  // Handle empty filter results
+  if (filteredTodos.length > 0) {
+    filteredTodos.forEach((todo) => {
+      todoEl.appendChild(generateTodoDOM(todo))
+    }) 
+  }else {
+    const messageEl = document.createElement('p')
+    messageEl.classList.add('empty-message')
+    messageEl.textContent= "No to-dos to show"
+    todoEl.appendChild(messageEl)
+  }
 }
 
 
 // Get the DOM elements for an individual todos
 const generateTodoDOM = (todo) => {
-  const todoEl = document.createElement('div')
+  const todoEl = document.createElement('label')
+  const containerEl = document.createElement('div')
   const checkbox = document.createElement('input')
   const textEl = document.createElement('span')
   const removeButton = document.createElement('button')
   
-  //set up completed checkbox
+  //set up todo checkbox
   checkbox.setAttribute('type', 'checkbox') 
   checkbox.checked = todo.completed
-  todoEl.appendChild(checkbox)
+  containerEl.appendChild(checkbox)
   checkbox.addEventListener('change', () => {
     toggleTodo(todo.id)
     saveTodos(todos)
     renderTodos(todos, filters)
   })
-
-  //set up todo item text
-  textEl.textContent = `  ${todo.text}   `
-  todoEl.appendChild(textEl)
   
+  //set up todo item text
+  textEl.textContent = todo.text
+  containerEl.appendChild(textEl)
+  
+  // Setup container
+  todoEl.classList.add('list-item')
+  containerEl.classList.add('list-item__container')
+  todoEl.appendChild(containerEl)
+
   // set up remove todo item button
-  removeButton.textContent = 'X'
+  removeButton.textContent = 'Remove'
+  removeButton.classList.add('button', 'button--text')
   todoEl.appendChild(removeButton)
   removeButton.addEventListener('click', () => {
     removeTodo(todo.id)
     saveTodos(todos)
     renderTodos(todos, filters)
   })
-
   return todoEl
 }
 
 // Get the DOM elements for list summary
 const generateSummaryDOM = (notComplete) => {
   const summary = document.createElement('h2');
-  let stat = notComplete.length === 1 ? "todo" : "todos"
-  summary.textContent = `You have ${notComplete.length} ${stat} left to complete.`
+  summary.classList.add('list-title')
+  const plural = notComplete.length === 1 ? "" : "s"
+  summary.textContent = `You have ${notComplete.length} todo${plural} left to complete.`
   return summary
 }

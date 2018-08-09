@@ -16,10 +16,16 @@ renderTodos(todos, filters)
   
   document.querySelector("#add-todo-form").addEventListener('submit', (e) => {
     e.preventDefault()
-    addTodo(e.target.elements.todoText.value)
-    saveTodos(todos)
-    e.target.elements.todoText.value = ''
-    renderTodos(todos, filters)
+    const text = e.target.elements.todoText.value.trim()
+    if (text !== "") {
+      addTodo(text)
+      saveTodos(todos)
+      renderTodos(todos, filters)
+      e.target.elements.todoText.value = ''
+    } else {
+      console.log("No item entered");
+      
+    }    
   })
 
   document.querySelector('#hide-completed').addEventListener('change', (e) => {
