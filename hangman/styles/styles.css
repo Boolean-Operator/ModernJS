@@ -46,9 +46,9 @@ p {
      display: flex;
      margin-bottom: 4.8rem;
 }
-.gameInfo {
-  width: 550px;
-  margin: 0 auto;
+.gameBoard {
+  min-width: 30rem;
+  /* margin: 0 auto; */
 }
 .gameElements {
   text-transform: uppercase;
