@@ -1,10 +1,13 @@
-const name = 'Mikey'
-console.log(name)
+import defaultSquare, { add, name } from './utilities.js'
+import defaultScream, {} from './scream.js'
 
-class Hangman {
-  myMethod() {
-    return 'Testing'
-  }
-}
-const hangman = new Hangman()
-console.log(hangman.myMethod());
+
+
+console.log('index.js');
+
+console.log(add(32,3));
+
+console.log(defaultScream(name));
+
+console.log(defaultSquare(10));
+
