@@ -1,4 +1,3 @@
-'use strict'
 class Hangman {
   constructor(word, remainingGuesses) {
     this.word = word.toLowerCase().split('')
@@ -60,4 +59,4 @@ class Hangman {
   } 
 }
 
-
+export {Hangman as default}

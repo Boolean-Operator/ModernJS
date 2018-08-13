@@ -1,4 +1,6 @@
-'use strict'
+import Hangman from './hangman.js'
+import getPuzzle from './requests.js'
+
 
 const puzzleEl = document.querySelector('#puzzle')
 const statusEl = document.querySelector('#status')
