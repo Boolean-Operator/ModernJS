@@ -1,17 +1,14 @@
-# Webpack Boilerplate 
-  ModernJS Babel transpiler  
+# Notes App
+  - Note taking application.  
 
 ## Overview
-  This is a boilerplate set up for building and converting js applications to webpack with babel.  
-  - Edit index.html to run bundle.js script
+  - This application allows the user to Create, Read, Update and Delete notes.  
+  - Data is stored in LocalStorage and only persists as long as the application is running.
+  - A current production build (public folder) is hosted on Surge.
 
-  - Edit existing js files to import modules to index.js from request.js and function.js files
-
-  - >npm install -- to rebuild node-modules
-  - >npm run dev-server -- to run development environment
-  - >npm run build -- to build production version of application
-
-  - copy public folder to host site app live
+  [Notes Applicaion]
+  (elastic-cherry.surge.sh)
+  
 
 ### Sections
 
@@ -24,22 +21,13 @@
   - edit.js
 - package.json
 - package-lock.json
-- webpack.config.js
-  - for multiple html entry files amend webpack.config.js file
-    - module.exports = {
-      - entry: {
-        - index: ['babel-polyfill', './src/index.js'],
-        - edit: ['babel-polyfill', './src/edit.js']
-      - },
-      - output: {
-        - path: path.resolve(__dirname, 'public/scripts'),
-        - filename: '[name]-bundle.js'
-      - },
-    -  ...
-    - }
 
-    - add script tag to html files
-    - // <index.html>
-    - // <script> src="/scripts/index-bundle.js"></script>
-    - // <edit.html>
-    - // <script> src="/scripts/edit-bundle.js"></script>
+### Future Versions
+
+- Create new Repo for project
+- Improve Data persistance with mySQL or Mongo
+- Add login, Authorization and Authority
+- Add Notes folders to organinzation groups of notes
+- Mobile version
+- Update UI
+  - backgound to look like college rule paper
