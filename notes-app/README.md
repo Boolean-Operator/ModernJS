@@ -6,7 +6,7 @@
   - Data is stored in LocalStorage and only persists as long as the application is running.
   - A current production build (public folder) is hosted on Surge.
 
-  [Notes Applicaion](https://www.elastic-cherry.surge.sh)
+  [Notes Applicaion](http://www.elastic-cherry.surge.sh)
   
 
 ### Sections
