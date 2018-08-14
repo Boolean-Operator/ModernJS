@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Edit Note</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="Icon/ico" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="/styles/styles.css" />
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <h1 class="header__title">Notes App</h1>
+      <h2 class="header__subtitle">Take notes and never forget</h2>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="actions__container actions__container--spaced">
+      <span id="last-edited"></span>
+      <button id="remove-note" class="button button--secondary">Remove Note</button>
+      
+    </div>
+  </div>
+  <div class="container">
+    <input id="note-title" type="text" class="title-input" placeholder="Note title">
+    <textarea id="note-body" class="body-input" placeholder="Enter note text" cols="30" rows="10"></textarea>
+    <button id="home-note-page" class="button" >Return to Main Page</button>
+  </div>
+
+  <script src="/scripts/edit-bundle.js"></script>
+</body>
+</html>
