@@ -1,6 +1,5 @@
-import { initializeEditPage } from './views.js'
+import { initializeEditPage, generateLastEdited } from './views.js'
 import { updateNote, removeNote } from './notes.js'
-import { generateLastEdited } from './views.js'
 
 const titleElement = document.querySelector('#note-title')
 const bodyElement = document.querySelector('#note-body')
