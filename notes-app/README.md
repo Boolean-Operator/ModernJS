@@ -26,20 +26,20 @@
 - package-lock.json
 - webpack.config.js
   - for multiple html entry files amend webpack.config.js file
-    module.exports = {
-      entry: {
-        index: ['babel-polyfill', './src/index.js'],
-        edit: ['babel-polyfill', './src/edit.js']
-      },
-      output: {
-        path: path.resolve(__dirname, 'public/scripts'),
-        filename: '[name]-bundle.js'
-      },
-      ...
-    }
+    - module.exports = {
+      - entry: {
+        - index: ['babel-polyfill', './src/index.js'],
+        - edit: ['babel-polyfill', './src/edit.js']
+      - },
+      - output: {
+        - path: path.resolve(__dirname, 'public/scripts'),
+        - filename: '[name]-bundle.js'
+      - },
+    -  ...
+    - }
 
-    add script tag to html files
-    // <index.html>
-    // <script> src="/scripts/index-bundle.js"></script>
-    // <edit.html>
-    // <script> src="/scripts/edit-bundle.js"></script>
+    - add script tag to html files
+    - // <index.html>
+    - // <script> src="/scripts/index-bundle.js"></script>
+    - // <edit.html>
+    - // <script> src="/scripts/edit-bundle.js"></script>
