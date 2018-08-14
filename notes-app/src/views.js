@@ -26,7 +26,7 @@ const generateNoteDOM = (note) => {
 }
 
 
-// Render application notes
+// Render notes to DOM
 const renderNotes = () => {
   const notesEl = document.querySelector('#notes')
   const filters = getFilters()
