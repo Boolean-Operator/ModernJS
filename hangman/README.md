@@ -21,3 +21,16 @@
 - package.json
 - package-lock.json
 -webpack.config.js
+
+
+### Future Versions
+
+- Create new Repo for project
+- Alt version to become Wheel of Fortune game
+- Add Score keeping and multiple players
+- Add prize wheel for semi random points
+- Change letter reveal to flipping tiles (cards)
+- Mobile version
+- Update UI
+  - ? Annimated Vanna 
+  - Change backgound, add music or applause sound
