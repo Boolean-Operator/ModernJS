@@ -1,12 +1,15 @@
-# Webpack Boilerplate 
-  ModernJS Babel transpiler  
+# Hangman Application
+  Hangman Game compliled with webpack and babel transpiler  
 
 ## Overview
-  This is a boilerplate set up for building and converting js applications to webpack with babel.  
+  - This application allows the user to play the classic hangman game.  
+  - Using the sliding scale choose a the length of the puzzle to solve.,
+  - Puzzle data is requested from an API provided by Andrew Mead.  Thanks Andrew 
+  - A current production build (public folder) is hosted on Surge.
+
+  [Hangman Applicaion](http://www.fretful-title.surge.sh)
   
-  - >npm install command to rebuild node-modules
-  - >npm run dev-server to run development version
-  - >npm run build to run production version
+
 
 ### Sections
 
