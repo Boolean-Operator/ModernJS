@@ -8,6 +8,7 @@ const removeButton = document.querySelector('#remove-note')
 const homeButton = document.querySelector('#home-note-page')
 
 const noteId = location.hash.substring(1)
+
 let notes = getSavedNotes()
 let note = notes.find((note) => note.id === noteId)
 
