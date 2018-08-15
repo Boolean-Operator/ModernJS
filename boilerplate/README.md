@@ -46,3 +46,25 @@
   - // <script> src="/scripts/index-bundle.js"></script>
   - // <edit.html>
   - // <script> src="/scripts/edit-bundle.js"></script>
+
+#### Process Checklist
+
+- Rename project to project-old
+- Clone boilerplate dir
+- Rename boilerplate to project(new)
+- Copy images folder(old) to public folder(new)
+- Copy styles folder(old) to public folder(new)
+- Copy index.html(old) to public folder(new)
+- Delete all but one script tags 
+- Change remaining script tag src to /scripts/bundle.js
+- Save and close html files
+- Copy script(old) files to src(new) script files
+- Close project(old) folder
+- Convert script(old) files to src(new) script files using modules 
+
+- BEGIN TESTING 
+- install node modules by running 
+    - >npm install
+- deploy development mode app to browser by running
+    - >npm run dev-server
+
