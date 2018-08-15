@@ -28,6 +28,8 @@
 - webpack.config.js
 
 - ** multiple html entry files **
+  - Ex. index.html & edit.html
+  
   - webpack.config.js file
     - module.exports = {
       - entry: {
