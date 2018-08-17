@@ -27,7 +27,7 @@ const getTodos = () => todos
 
 // createTodo, Args: todo text, RV: none
 const createTodo = (text) => {
-  capFirst(text)
+  text = capFirst(text)
   const id = uuidv4()
   todos.push({
     id: id,
