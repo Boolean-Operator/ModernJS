@@ -8,9 +8,9 @@ let todos = []
 const loadTodos = () => {
   const todosJSON = localStorage.getItem('todos')
   try {
-    return (todosJSON) ? JSON.parse(todosJSON) : []
+    todos = todosJSON ? JSON.parse(todosJSON) : []
   } catch (e) {
-    return []
+    todos = []
   }
 }
 
@@ -26,12 +26,12 @@ const saveTodos = () => {
 const getTodos = () => todos
 
 // createTodo, Args: todo text, RV: none
-const createTodo = (todoText) => {
-  todoText = capFirst(todoText)
+const createTodo = (text) => {
+  capFirst(text)
   const id = uuidv4()
   todos.push({
     id: id,
-    text: todoText,
+    text: text,
     createdAt: moment().valueOf(),
     completed: false
   })
@@ -56,7 +56,7 @@ const toggleTodo = (id) => {
 }
 
 // Call loadTodos 
-todos = loadTodos()
+loadTodos()
 
 // Setup the exports
-export { saveTodos, getTodos, createTodo, removeTodo, toggleTodo } 
+export { getTodos, createTodo, removeTodo, toggleTodo } 

@@ -1,9 +1,8 @@
 // Set up index.html to load the bundle
 // Make sure to load uuid 
-console.log('index.js');
 
 // Add necessary imports
-import { setFilters} from './filters.js'
+import { setFilters } from './filters.js'
 import { createTodo } from './todos.js'
 import { renderTodos} from './views.js'
 
@@ -12,13 +11,9 @@ renderTodos()
 
 // Set up search text handler
 document.querySelector('#search-text').addEventListener('input', (e) => {
-  setFilters({searchText: e.target.value})
-  renderTodos()
-})
-
-// Set up checkbox handler
-document.querySelector('#hide-completed').addEventListener('change', (e) => {
-  setFilters({hideCompleted: e.target.checked})
+  setFilters({
+    searchText: e.target.value
+  })
   renderTodos()
 })
 
@@ -28,13 +23,20 @@ document.querySelector("#add-todo-form").addEventListener('submit', (e) => {
   const text = e.target.elements.todoText.value.trim()
   if (text !== "") {
     createTodo(text)
-    // saveTodos(todos)
     renderTodos()
     e.target.elements.todoText.value = ''
   } else {
     console.log("No item entered");
-
+    
   }
+})
+
+// Set up checkbox handler
+document.querySelector('#hide-completed').addEventListener('change', (e) => {
+  setFilters({
+    hideCompleted: e.target.checked
+  })
+  renderTodos()
 })
 
 // Sort by function

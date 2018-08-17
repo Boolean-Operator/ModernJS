@@ -1,21 +1,18 @@
-import { getFilters } from './filters.js'
-import { saveTodos, getTodos, removeTodo, toggleTodo } from './todos.js' 
+import { getTodos, removeTodo, toggleTodo } from './todos.js'
+import { getFilters }  from './filters.js'
 
-
-// renderTodos, Args: none, RV: none
 // Render application todos based on filters
+// renderTodos, Args: none, RV: none
 const renderTodos = () => {
   const todoEl = document.querySelector('#todos')
   const filters = getFilters()
-  const todos = getTodos()
-  const filteredTodos = todos.filter((todo) => {
-    let textSearch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-    let completed = !todo.completed
-    return (filters.hideCompleted) ? textSearch && completed : textSearch
+  const filteredTodos = getTodos().filter((todo) => {
+    const textSearch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    const hideCompleted = !filters.hideCompleted || !todo.completed
+    return textSearch && hideCompleted
   })
 
   const notCompleted = filteredTodos.filter((todo) => !todo.completed)
-
   todoEl.innerHTML = ''
   todoEl.appendChild(generateSummaryDOM(notCompleted))
 
@@ -33,8 +30,8 @@ const renderTodos = () => {
 }
 
 
-// generateTodoDOM, Args: todo, RV: the todo element
 // Get the DOM elements for an individual todos
+// generateTodoDOM, Args: todo, RV: the todo element
 const generateTodoDOM = (todo) => {
   const todoEl = document.createElement('label')
   const containerEl = document.createElement('div')
@@ -48,8 +45,8 @@ const generateTodoDOM = (todo) => {
   containerEl.appendChild(checkbox)
   checkbox.addEventListener('change', () => {
     toggleTodo(todo.id)
-    saveTodos()
     renderTodos()
+    
   })
 
   //set up todo item text
@@ -67,19 +64,18 @@ const generateTodoDOM = (todo) => {
   todoEl.appendChild(removeButton)
   removeButton.addEventListener('click', () => {
     removeTodo(todo.id)
-    saveTodos()
     renderTodos()
   })
   return todoEl
 }
 
 
-// generateSummaryDOM, Args: incompletedTodos, RV: the summary element
 // Get the DOM elements for list summary
+// generateSummaryDOM, Args: notComplete, RV: summary element
 const generateSummaryDOM = (notComplete) => {
   const summary = document.createElement('h2');
-  summary.classList.add('list-title')
   const plural = notComplete.length === 1 ? "" : "s"
+  summary.classList.add('list-title')
   summary.textContent = `You have ${notComplete.length} todo${plural} left to complete.`
   return summary
 }
